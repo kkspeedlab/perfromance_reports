@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Performance Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f4f7f6; display: flex; align-items: center; justify-content: center; height: 100vh; }
+        .login-card { width: 100%; max-width: 400px; padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <h3 class="text-center mb-4">Secure Access</h3>
+    <p class="text-muted text-center small">Please enter the portal password.</p>
+    <form id="loginForm">
+        <div class="mb-3">
+            <input type="password" id="passwordField" class="form-control" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Access Reports</button>
+        <div id="errorMsg" class="text-danger mt-3 small text-center" style="display:none;">
+            Incorrect password. Please try again.
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const pass = document.getElementById('passwordField').value;
+        
+        // SET YOUR PASSWORD HERE
+        const SECRET = "Reports2026"; 
+
+        if (pass === SECRET) {
+            // Save a temporary "session" so they don't get kicked out immediately
+            sessionStorage.setItem('authenticated', 'true');
+            window.location.href = "index.html"; // Redirect to your dashboard
+        } else {
+            document.getElementById('errorMsg').style.display = 'block';
+        }
+    });
+</script>
+
+</body>
+</html>

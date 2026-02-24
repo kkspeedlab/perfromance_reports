@@ -1,3 +1,9 @@
+<script>
+    // If the user hasn't logged in, send them back to the login page
+    if (sessionStorage.getItem('authenticated') !== 'true') {
+        window.location.href = "login.html";
+    }
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
